@@ -20,7 +20,10 @@ namespace HimzoManager.Model
 
         private string listAll(string indent = "")
         {
-            string result = Name + ";" + Description + ";" + Id + "\n";
+            // if Description is multiline, we need to indent it
+            string descrSpacer = new String(' ', (Name.Length+Id.Length+2));
+            string desc = Description.Replace("\n", "\n" + indent + descrSpacer);
+            string result = Name + ";" + Id + ";" + desc + "\n";
             if (Children.Count == 0)
             {
                 return result;

@@ -46,10 +46,12 @@ namespace HimzoManager.View
             //Console.WriteLine(selecedVM);
             //Console.WriteLine(vboxClient.GetMachineName(vboxClient.FindMachineById(vboxClient.LoginToken, selecedVM.Id)));
             VboxEditorViewModel vm = new VboxEditorViewModel();
+            Console.WriteLine($"Elérhető gépek:");
             foreach (var item in vm.Machines)
             {
                 Console.WriteLine(item);
             }
+            Console.WriteLine($"\n{vm.Machines[6]} gép snapshot-jai:");
             vm.getSnapshots(vm.Machines[6]);
             Console.WriteLine(vm.Machines[6].CurrentSnapshot);
             //foreach (var item in vm.Machines[6].CurrentSnapshot)
