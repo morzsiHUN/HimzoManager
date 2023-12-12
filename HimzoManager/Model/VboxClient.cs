@@ -8,47 +8,20 @@ namespace HimzoManager.Model
         private vboxPortTypeClient vbox = new();
 
         private string loginToken = "";
-        public string LoginToken
-        {
-            get
-            {
-                return loginToken;
-            }
-        }
-
-        //private List<string> machines = [];
-        //public List<string> Machines
-        //{
-        //    get
-        //    {
-        //        return machines;
-        //    }
-        //}
-
-        public VboxClient(vboxPortTypeClient client, Stopwatch sw)
-        {
-            vbox = client;
-            Console.WriteLine($"[{sw.Elapsed}] VboxTest before token");
-            loginToken = GetToken();
-            Console.WriteLine($"[{sw.Elapsed}] VboxTest after token");
-
-            //machines.AddRange(GetMachine(loginToken));
-        }
 
         public VboxClient(vboxPortTypeClient client)
         {
             vbox = client;
-            loginToken = GetToken();
-
-            //machines.AddRange(GetMachine(loginToken));
+            loginToken = getToken();
         }
 
-        public string GetToken()
+        private string getToken()
         {
             var token = vbox.IWebsessionManager_logonAsync("test", "test").Result;
             return token.returnval;
         }
-
+        // TODO: a token egy időután lejárt, ezért nem a tokenes gépeket és snapshotokat kellene visszaadni, hanem azoknak az id-jét. Ezek után meg minden metódus az ID alapján működne.
+        // TODO: ha a token lejárt azt érzékelni, majd megújakítani
         #region Machine
         public string[] GetMachines()
         {
@@ -84,19 +57,6 @@ namespace HimzoManager.Model
             var children = vbox.ISnapshot_getChildrenAsync(snapshot).Result;
             return children.returnval;
         }
-
-        //public string[] GetSnapShots(string machine)
-        //{
-        //    string root = GetFirstSnapShot(machine);
-        //    var leaves = GetSnapshotChildren(root);
-        //    string[] tree = new string[leaves.Length + 1];
-        //    tree[0] = root;
-        //    for (int i = 1; i < tree.Length; i++)
-        //    {
-        //        tree[i] = leaves[i - 1];
-        //    }
-        //    return tree;
-        //}
 
         public string GetSnapshotName(string snapshot)
         {

@@ -10,12 +10,12 @@ namespace HimzoManager.Model
     {
         public string Name { get; set; }
         public string Id { get; set; }
-        public Snapshot CurrentSnapshot { get; set; }
+        public Snapshot Snapshots { get; set; }
         //public HashSet<Snapshot> Snapshots { get; set; } = new();
 
         public override string ToString()
         {
-            return Name + ";" + Id + ";" + CurrentSnapshot;
+            return Name + ";" + Id + ";" + Snapshots;
         }
 
         public override int GetHashCode()

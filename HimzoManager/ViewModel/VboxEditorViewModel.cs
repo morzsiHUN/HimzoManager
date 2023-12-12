@@ -40,7 +40,7 @@ namespace HimzoManager.ViewModel
             }
         }
 
-        private Snapshot GetSnapshotRecursive(string machine, Snapshot snapshot)
+        private Snapshot getSnapshotRecursive(string machine, Snapshot snapshot)
         {
             var snapshotToken = vboxClient.FindSnapshotById(machine, snapshot.Id);
             var children = vboxClient.GetSnapshotChildren(snapshotToken);
@@ -56,12 +56,12 @@ namespace HimzoManager.ViewModel
                     Id = snapshotId
                 };
                 snapshot.Children.Add(snapshotData);
-                GetSnapshotRecursive(machine, snapshotData);
+                getSnapshotRecursive(machine, snapshotData);
             }
             return snapshot;
         }
 
-        public void getSnapshots(Machine machine)
+        public void GetSnapshots(Machine machine)
         {
             string machineToken = vboxClient.FindMachineById(machine.Id);
             var snapshots = vboxClient.GetFirstSnapShot(machineToken);
@@ -74,9 +74,7 @@ namespace HimzoManager.ViewModel
                 Description = snapshotDescription,
                 Id = snapshotId
             };
-            machine.CurrentSnapshot = GetSnapshotRecursive(machineToken, snapshotData);
-            //machine.CurrentSnapshot.Children.Add(GetSnapshotRecursive(machineToken, snapshotData));
-            return;
+            machine.Snapshots = getSnapshotRecursive(machineToken, snapshotData);
         }
     }
 }

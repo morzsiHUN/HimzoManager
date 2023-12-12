@@ -52,8 +52,8 @@ namespace HimzoManager.View
                 Console.WriteLine(item);
             }
             Console.WriteLine($"\n{vm.Machines[6]} gép snapshot-jai:");
-            vm.getSnapshots(vm.Machines[6]);
-            Console.WriteLine(vm.Machines[6].CurrentSnapshot);
+            vm.GetSnapshots(vm.Machines[6]);
+            Console.WriteLine(vm.Machines[6].Snapshots);
             //foreach (var item in vm.Machines[6].CurrentSnapshot)
             //{
             //    Console.WriteLine(item);
