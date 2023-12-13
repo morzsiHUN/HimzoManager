@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HimzoManager.Model
+namespace HimzoCommon.Reader
 {
-    class DataHandler
+    public interface IDataReader
     {
+        T Read<T>(string path);
     }
 }

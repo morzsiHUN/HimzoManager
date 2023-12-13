@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace HimzoManager.Model
 {
-    class VmData
+    public class VmData
     {
         public string Name = "";
         public string Id = "";
-        //public string Snapshot = "";
-        //DateTime startDate;
-        //DateTime resetDate;
+        public string SnapshotID = "";
+        public DateTime? StartDate;
+        public TimeSpan? ResetInterval;
 
         public override string ToString()
         {

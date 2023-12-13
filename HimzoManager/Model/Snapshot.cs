@@ -8,9 +8,9 @@ namespace HimzoManager.Model
 {
     class Snapshot
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Id { get; set; }
+        public string Name { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Id { get; set; } = "";
         public List<Snapshot> Children { get; set; } = new();
 
         public override string ToString()
@@ -44,6 +44,23 @@ namespace HimzoManager.Model
         public override int GetHashCode()
         {
             return Id.GetHashCode();
+        }
+
+        public Snapshot? FindSnapshotById(string id)
+        {
+            if (Id == id)
+            {
+                return this;
+            }
+            foreach (var child in Children)
+            {
+                var result = child.FindSnapshotById(id);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+            return null;
         }
     }
 }

@@ -21,4 +21,8 @@
     <PackageReference Include="System.ServiceModel.Security" Version="4.10.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HimzoCommon\HimzoCommon.csproj" />
+  </ItemGroup>
+
 </Project>

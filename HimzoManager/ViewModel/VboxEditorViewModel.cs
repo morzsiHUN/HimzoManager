@@ -1,4 +1,5 @@
 ﻿using HimzoManager.Model;
+using HimzoCommon.Writer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +11,24 @@ namespace HimzoManager.ViewModel
     class VboxEditorViewModel
     {
         private VboxClient vboxClient;
-        //private Machine selectedVM { get; set; }
+        private IDataWriter dataWriter;
+        public Machine? SelectedMachine { get; set; }
+
+        private VmData? selectedVmData;
+        public VmData? SelectedVmData
+        {
+            get
+            {
+                return selectedVmData;
+            }
+        }
         public List<Machine> Machines { get; set; } = [];
 
-        public VboxEditorViewModel()
+        public VboxEditorViewModel(IDataWriter dataWriter)
         {
-            vboxClient = new VboxClient(new Vbox.vboxPortTypeClient());
+            this.vboxClient = new VboxClient(new Vbox.vboxPortTypeClient());
             getMachines();
-        }
-
-        private void loadMachines()
-        {
-
+            this.dataWriter = dataWriter;
         }
 
         private void getMachines()
@@ -61,7 +68,7 @@ namespace HimzoManager.ViewModel
             return snapshot;
         }
 
-        public void GetSnapshots(Machine machine)
+        public void LoadSnapshots(Machine machine)
         {
             string machineToken = vboxClient.FindMachineById(machine.Id);
             var snapshots = vboxClient.GetFirstSnapShot(machineToken);
@@ -75,6 +82,44 @@ namespace HimzoManager.ViewModel
                 Id = snapshotId
             };
             machine.Snapshots = getSnapshotRecursive(machineToken, snapshotData);
+        }
+
+        public void SelectMachine(Machine machine)
+        {
+            SelectedMachine = machine;
+            this.LoadSnapshots(machine);
+            this.selectedVmData = new VmData
+            {
+                Name = machine.Name,
+                Id = machine.Id,
+                SnapshotID = machine.Snapshots.Id
+            };
+        }
+
+        public void SetStartDate(DateTime startDate)
+        {
+            if (SelectedVmData != null)
+            {
+                SelectedVmData.StartDate = startDate;
+            }
+        }
+
+        public void SetResetInterval(TimeSpan resetInterval)
+        {
+            if (SelectedVmData != null)
+            {
+                SelectedVmData.ResetInterval = resetInterval;
+            }
+        }
+
+        public void SaveMachine(string path)
+        {
+            dataWriter.Write(path+$"{selectedVmData.Name}.xml", selectedVmData);
+        }
+
+        public void LoadMachine(string path)
+        {
+            // TODO
         }
     }
 }
