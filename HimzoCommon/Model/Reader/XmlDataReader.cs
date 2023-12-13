@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace HimzoCommon.Reader
+namespace HimzoCommon.Model.Reader
 {
     public class XmlDataReader : IDataReader
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HimzoManager.Data
+namespace HimzoCommon.Model.Data
 {
     public class Snapshot
     {
@@ -21,7 +21,7 @@ namespace HimzoManager.Data
         private string listAll(string indent = "")
         {
             // if Description is multiline, we need to indent it
-            string descrSpacer = new String(' ', (Name.Length+Id.Length+2));
+            string descrSpacer = new string(' ', Name.Length + Id.Length + 2);
             string desc = Description.Replace("\n", "\n" + indent + descrSpacer);
             string result = Name + ";" + Id + ";" + desc + "\n";
             if (Children.Count == 0)

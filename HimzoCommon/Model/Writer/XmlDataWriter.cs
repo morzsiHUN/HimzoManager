@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace HimzoCommon.Writer
+namespace HimzoCommon.Model.Writer
 {
     public class XmlDataWriter : IDataWriter
     {

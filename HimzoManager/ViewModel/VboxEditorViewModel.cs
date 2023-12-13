@@ -1,11 +1,6 @@
-﻿using HimzoManager.Model;
-using HimzoCommon.Writer;
-using HimzoManager.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HimzoCommon.Model.Data;
+using HimzoCommon.Model.Writer;
+using HimzoCommon.Model.VboxClient;
 
 namespace HimzoManager.ViewModel
 {

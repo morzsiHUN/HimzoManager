@@ -1,9 +1,10 @@
 ﻿using System.Diagnostics;
 using Vbox;
 
-namespace HimzoManager.Model
+namespace HimzoCommon.Model.VboxClient
 {
-    class VboxClient
+    //TODO: A VboxClient legyen absztakt, majd legyen egy adatot csak olvasó része és egy adatot módosító része. Az olvasót az editor, a módosítót a service használja. Akár az is lehet, hogy a olvasó az az editor projekten belül legyen, a módosító pedig a service-ben legyen.
+    public class VboxClient
     {
         private vboxPortTypeClient vbox = new();
 

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HimzoCommon.Reader
+namespace HimzoCommon.Model.VboxClient
 {
-    public interface IDataReader
+    public class VboxClientSetter
     {
-        T Read<T>(string path);
     }
 }

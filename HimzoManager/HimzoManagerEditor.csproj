@@ -25,4 +25,9 @@
     <ProjectReference Include="..\HimzoCommon\HimzoCommon.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Connected Services\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
+
 </Project>

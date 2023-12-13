@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HimzoCommon.Writer
+namespace HimzoCommon.Model.VboxClient
 {
-    public interface IDataWriter
+    public class VboxClientGetter
     {
-        void Write<T>(string path, T data);
     }
 }

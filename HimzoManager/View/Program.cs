@@ -1,7 +1,5 @@
-﻿using HimzoManager.Model;
-using HimzoManager.ViewModel;
-using System.Diagnostics;
-using HimzoCommon.Writer;
+﻿using HimzoManager.ViewModel;
+using HimzoCommon.Model.Writer;
 
 namespace HimzoManager.View
 {

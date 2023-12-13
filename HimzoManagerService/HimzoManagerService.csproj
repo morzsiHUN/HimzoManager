@@ -56,5 +56,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HimzoCommon\HimzoCommon.csproj">
+      <Project>{6ed64e69-5145-4833-a756-980b773a67b5}</Project>
+      <Name>HimzoCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,16 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "G:/programok/VMBox_6.0.x/sdk/bindings/webservice/vboxwebService.wsdl"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, Vbox"
+    ],
+    "targetFramework": "net8.0",
+    "typeReuseMode": "All"
+  }
+}
