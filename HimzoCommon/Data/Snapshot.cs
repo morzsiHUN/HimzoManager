@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HimzoManager.Model
+namespace HimzoManager.Data
 {
-    class Snapshot
+    public class Snapshot
     {
         public string Name { get; set; } = "";
         public string Description { get; set; } = "";

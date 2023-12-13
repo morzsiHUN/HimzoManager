@@ -4,17 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HimzoManager.Model
+namespace HimzoManager.Data
 {
-    class Machine
+    public class VmData
     {
-        public string Name { get; set; }
-        public string Id { get; set; }
-        public Snapshot Snapshots { get; set; }
+        public string Name = "";
+        public string Id = "";
+        public string SnapshotID = "";
+        public DateTime? StartDate;
+        public TimeSpan? ResetInterval;
 
         public override string ToString()
         {
-            return Name + ";" + Id + ";" + Snapshots;
+            return Name + ";" + Id;
         }
 
         public override int GetHashCode()
